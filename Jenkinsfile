@@ -30,7 +30,7 @@ pipeline {
 	   stage('Push Docker image') {
 	        steps {
                    script {
-                        docker.withRegistry( 'registry', registryCredential ) {
+                        docker.withRegistry( '', registryCredential ) {
                            sh "docker-compose push"
                         }
 	               }
