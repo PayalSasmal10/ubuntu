@@ -19,7 +19,7 @@ pipeline {
 	   stage('Build Docker Image') {
 	        steps {
 		   script {
-			    app = docker.build("payalsasmal/ubuntu_18.04:${env.BUILD_ID}")"
+			    app = docker.build("payalsasmal/ubuntu_18.04:${env.BUILD_ID}")
 		   }
 	        
 	        }
