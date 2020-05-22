@@ -1,0 +1,35 @@
+version: '2.4'
+
+services:
+  ubuntu_service:
+    image: ubuntu:18.04
+    entrypoint: /bin/sh -c "useradd -ms /bin/bash payal && sleep 5000" #- c - argument
+    cap_add:
+      - SYS_PTRACE
+    container_name: my_ubuntu_container
+    #deploy:
+      #resources:
+        #limits:
+          #cpus: '0.05'
+          #memory: 250M
+        #reservations:
+          #cpus: '0.02'
+          #memory: 100M
+    mem_limit: 250m
+    cpus: 0.05
+    volumes:
+      - my_volume:/var/lib/docker:ro
+
+        # - type: volume
+        #source: ./Users/psasmal/Desktop/ubuntucontainer
+        #target: var/lib/docker/
+        #read_only: true
+    blkio_config:
+      weight: 100
+
+
+
+volumes:
+  my_volume:
+
+
