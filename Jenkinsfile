@@ -18,9 +18,9 @@ pipeline {
 	        }
 	   stage('Build Docker Image') {
 	        steps {
-				 sh "cd /var/jenkins_home/workspace/UbuntuPipeline"
-		   
-                 app = sh "docker-compose -f docker-compose.yaml up -d"
+		   script {
+			     app = docker.build("payalsasmal/hello:${env.BUILD_ID}")
+		   }
 	        
 	        }
 	   }
