@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubuntu-deploy
+  name: ubuntu
   labels:
-    app: ubuntu-deploy
+    app: ubuntu
 spec:
   replicas: 1
   selector:
       matchLabels:
-        app: ubuntu-pod
+        app: ubuntu
   template:
     metadata:
       labels:
-        app: ubuntu-pod
+        app: ubuntu
     spec:
       containers:
       - name: different-service
@@ -26,13 +26,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ubuntu-service
+  name: ubuntu
   labels:
-    app: ubuntu-service
+    app: ubuntu
 spec:
   ports:
     - port: 4000
       targetPort: 4000
   selector:
-      app: ubuntu-deploy
+      app: ubuntu
   type: LoadBalancer
