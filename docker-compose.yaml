@@ -2,8 +2,9 @@ version: '2.4'
 
 services:
   ubuntu_service:
-    image: ubuntu:18.04
-    entrypoint: /bin/sh -c "useradd -ms /bin/bash payal && sleep 5000" #- c - argument
+    build:
+      context: .
+      dockerfile: Dockerfile 
     cap_add:
       - SYS_PTRACE
     container_name: my_ubuntu_container
