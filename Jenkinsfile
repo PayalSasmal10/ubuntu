@@ -20,7 +20,7 @@ pipeline {
 	        steps {
 		   script {
 			    sh "cd /var/jenkins_home/workspace/UbuntuPipeline"
-		            sh "docker-compose -f docker-compose.yaml up -d"
+			   sh "docker-compose -p $registry:${env.BUILD_ID} build "
 		   }
 	        
 	        }
@@ -31,7 +31,7 @@ pipeline {
 	        steps {
                    script {
                         docker.withRegistry( '', registryCredential ) {
-                           sh "docker-compose push"
+				sh "docker-compose push $registry:${env.BUILD_ID}"
                         }
 	               }
 
