@@ -19,8 +19,7 @@ pipeline {
 	   stage('Build Docker Image') {
 	        steps {
 		   script {
-			    sh "cd /var/jenkins_home/workspace/UbuntuPipeline"
-			    sh "docker-compose -f docker-compose.yaml up -d"
+			    app = docker.build("payalsasmal/ubuntu_18.04:${env.BUILD_ID}")"
 		   }
 	        
 	        }
@@ -31,7 +30,8 @@ pipeline {
 	        steps {
                    script {
                         docker.withRegistry( '', registryCredential ) {
-                           sh "docker-compose push"
+                           app.push("latest")
+			   app.push("${env.BUILD_ID}")
                         }
 	               }
 
