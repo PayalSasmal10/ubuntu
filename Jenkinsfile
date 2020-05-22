@@ -31,7 +31,7 @@ pipeline {
 	        steps {
                    script {
                         docker.withRegistry( '', registryCredential ) {
-				sh "docker-compose push $registry:${env.BUILD_ID}"
+				sh "docker-compose push(${env.BUILD_ID})"
                         }
 	               }
 
