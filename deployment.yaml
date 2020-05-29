@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubuntu
+  name: ubuntu_18.04
   labels:
-    app: ubuntu
+    app: ubuntu_18.04
 spec:
   replicas: 1
   selector:
       matchLabels:
-        app: ubuntu
+        app: ubuntu_18.04
   template:
     metadata:
       labels:
-        app: ubuntu
+        app: ubuntu_18.04
     spec:
       containers:
       - name: different-service
@@ -20,19 +20,19 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 4000
-          name: ubuntu
+          name: ubuntu_18.04
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ubuntu
+  name: ubuntu_18.04
   labels:
-    app: ubuntu
+    app: ubuntu_18.04
 spec:
   ports:
     - port: 4000
       targetPort: 4000
   selector:
-      app: ubuntu
+      app: ubuntu_18.04
   type: LoadBalancer
