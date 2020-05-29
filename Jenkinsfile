@@ -20,7 +20,7 @@ pipeline {
 	        steps {
 		   script {
 			    sh "cd /var/jenkins_home/workspace/UbuntuPipeline"
-			    sh "docker-compose -t payalsasmal/ubuntu_18.04:${env.BUILD_ID} build ."
+			    sh "docker-compose build"
 		   }
 	        
 	        }
@@ -40,7 +40,7 @@ pipeline {
 
 	   stage('Deploy to K8S') {
 	        steps{
-                sh "sed -i 's/ubuntu_18.04:latest/ubuntu_18.04:${env.BUILD_ID}/g' deployment.yaml"
+            
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml',
                 credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             	}
