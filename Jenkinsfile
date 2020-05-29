@@ -20,7 +20,7 @@ pipeline {
 	        steps {
 		   script {
 			    sh "cd /var/jenkins_home/workspace/UbuntuPipeline"
-			    sh "docker-compose -p up "
+			    sh "docker-compose up "
 		   }
 	        
 	        }
