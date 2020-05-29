@@ -4,9 +4,9 @@ pipeline {
 	    registryCredential = 'dockerhub'
 	    app = ''
 	    PROJECT_ID = 'rising-webbing-276809'
-        CLUSTER_NAME = 'docker-image'
-        LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'gke'
+            CLUSTER_NAME = 'docker-image'
+            LOCATION = 'us-central1-c'
+            CREDENTIALS_ID = 'gke'
 
   	}
 	agent any
