@@ -1,6 +1,6 @@
 pipeline {
 	 environment {
-	    registry = "payalsasmal/ubuntu_18.04"
+	    registry = "payalsasmal/ubuntu"
 	    registryCredential = 'dockerhub'
 	    app = ''
 	    PROJECT_ID = 'rising-webbing-276809'
