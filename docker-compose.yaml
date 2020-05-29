@@ -2,9 +2,7 @@ version: '2.4'
 
 services:
   ubuntu_service:
-    build:
-      context: .
-      dockerfile: Dockerfile 
+    build: .
     cap_add:
       - SYS_PTRACE
     container_name: my_ubuntu_container
