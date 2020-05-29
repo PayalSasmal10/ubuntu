@@ -40,9 +40,9 @@ pipeline {
 
 	   stage('Deploy to K8S') {
 	        steps{
-            
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml',
-                credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+			sh "sed -i 's/ubuntu:latest/ubuntu:latest/g' deployment.yaml"
+			step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml',
+                	credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             	}
 
 
