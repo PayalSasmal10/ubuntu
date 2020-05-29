@@ -20,7 +20,7 @@ pipeline {
 	        steps {
 		   script {
 			    sh "cd /var/jenkins_home/workspace/UbuntuPipeline"
-			    sh "docker-compose build "
+			    sh "docker-compose build -t payalsasmal/ubuntu_18.04:${env.BUILD_ID} ."
 		   }
 	        
 	        }
