@@ -18,6 +18,7 @@ spec:
       - name: different-service
         image: payalsasmal/ubuntu:latest
         imagePullPolicy: Always
+        command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
         ports:
         - containerPort: 4000
           name: ubuntu
